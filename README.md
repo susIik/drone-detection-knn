@@ -131,7 +131,7 @@ go run ./cmd/train_model \
 
 ```bash
 cd server
-go run . serve -proto http -p 5000
+go run . serve -proto http -p 5001
 ```
 
 ### 4. Start Frontend
