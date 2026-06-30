@@ -10,7 +10,7 @@ RUN go mod download
 COPY . .
 
 # Build the application
-RUN go build -o main .
+RUN CGO_ENABLED=0 GOOS=linux go build -o main .
 
 # Use a minimal base image for final deployment
 FROM alpine:latest
@@ -18,8 +18,13 @@ FROM alpine:latest
 # Set working directory in the container
 WORKDIR /app/
 
+# Install ffmpeg to image
+RUN apk --no-cache add ffmpeg
+
 # Copy the built binary from the builder stage
 COPY --from=builder /build/main .
+
+COPY /drone/prototypes.example.json ./drone/prototypes.json
 
 # Expose the application port
 EXPOSE 5001
