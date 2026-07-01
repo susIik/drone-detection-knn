@@ -1,0 +1,12 @@
+services:
+  backend:
+    image: frontend
+    build: ./server
+    ports:
+      - "5001:5001"
+
+  frontend:
+    image: backend
+    build: ./client
+    ports:
+      - "3000:3000"
