@@ -26,3 +26,5 @@ package-lock.json
 
 *sqlite3
 .env
+
+.venv
