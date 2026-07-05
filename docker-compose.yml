@@ -10,3 +10,11 @@ services:
     build: ./client
     ports:
       - "3000:3000"
+
+  #listener:
+  #  image: listener
+  #  build: ./scripts
+  #  devices:
+  #    - "/dev/snd:/dev/snd"
+  #  ports:
+  #    - "8080:8080"
