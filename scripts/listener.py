@@ -38,8 +38,14 @@ def listen():
         backend_url + "/api/audio/classify",
         json=payload
     )
+
+    if response.json()["isDrone"]:
+      pass
+
+    
     print(response.status_code)
     print(response.text)
+    print(response.json()["isDrone"])
     sleep(5)
 
 if __name__ == "__main__":
