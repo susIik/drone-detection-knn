@@ -1,3 +1,4 @@
+from time import sleep
 import io
 import requests
 import base64
@@ -6,32 +7,40 @@ from scipy.io.wavfile import write
 
 backend_url = "http://localhost:5001"
 
+def rec_audio(fs, seconds):
+  myrec = sd.rec(int(seconds * fs), samplerate=fs, channels=1, dtype="int16")
+  sd.wait()  # Wait until recording is finished
 
-fs = 44100  # Sample rate
-seconds = 10  # Duration of recording
+  wav_buffer = io.BytesIO() # save file to memory as bytes
+  write(wav_buffer, fs, myrec)
 
-myrec = sd.rec(int(seconds * fs), samplerate=fs, channels=1, dtype="int16")
-sd.wait()  # Wait until recording is finished
+  audio_b64 = base64.b64encode(wav_buffer.getvalue()).decode("utf-8") # convert to base64 vaw
 
-wav_buffer = io.BytesIO() # save file to memory as bytes
-write(wav_buffer, fs, myrec)
+  payload = {
+      "audio": audio_b64,
+      "channels": 1,
+      "sampleRate": fs,
+      "sampleSize": 16,
+      "duration": seconds,
+      #"latitude": None,
+      #"longitude": None
+  }
 
-audio_b64 = base64.b64encode(wav_buffer.getvalue()).decode("utf-8") # convert to base64 vaw
+  return payload
 
-payload = {
-    "audio": audio_b64,
-    "channels": 1,
-    "sampleRate": fs,
-    "sampleSize": 16,
-    "duration": seconds,
-    #"latitude": None,
-    #"longitude": None
-}
+def listen():
+  fs = 44100  # Sample rate
+  seconds = 2  # Duration of recording
 
-response = requests.post(
-    backend_url + "/api/audio/classify",
-    json=payload
-)
+  while True:
+    payload = rec_audio(fs, seconds)
+    response = requests.post(
+        backend_url + "/api/audio/classify",
+        json=payload
+    )
+    print(response.status_code)
+    print(response.text)
+    sleep(5)
 
-print(response.status_code)
-print(response.text)
+if __name__ == "__main__":
+  listen()
