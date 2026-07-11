@@ -41,10 +41,8 @@ def listen():
     )
 
     if response.json()["isDrone"]:
-      pass
-
-    sd.play(audio, fs)
-    sd.wait()
+      sd.play(audio, fs)
+      sd.wait()
 
     
     print(response.status_code, flush = True)
