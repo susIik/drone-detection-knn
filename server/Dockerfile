@@ -24,7 +24,7 @@ RUN apk --no-cache add ffmpeg
 # Copy the built binary from the builder stage
 COPY --from=builder /build/main .
 
-COPY /drone/prototypes.example.json ./drone/prototypes.json
+COPY /drone/prototypes.json ./drone/prototypes.json
 
 # Expose the application port
 EXPOSE 5001
