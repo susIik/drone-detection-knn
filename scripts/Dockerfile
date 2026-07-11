@@ -4,7 +4,7 @@ WORKDIR /app
 
 RUN apt-get update && apt-get install libportaudio2 -y
 
-COPY listener.py requirements.txt ./
+COPY listener.py requirements.txt danger.wav ./
 RUN pip install --no-cache-dir -r requirements.txt
 
 CMD ["python", "./listener.py"]

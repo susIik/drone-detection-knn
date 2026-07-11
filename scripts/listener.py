@@ -3,9 +3,9 @@ import io
 import requests
 import base64
 import sounddevice as sd
-from scipy.io.wavfile import write
+from scipy.io.wavfile import write, read
 
-backend_url = "http://localhost:5001"
+backend_url = "http://backend:5001"
 
 def rec_audio(fs, seconds):
   myrec = sd.rec(int(seconds * fs), samplerate=fs, channels=1, dtype="int16")
@@ -42,8 +42,12 @@ def listen():
     if response.json()["isDrone"]:
       pass
 
+    fs, audio = read("danger.wav")
+    sd.play(audio, fs)
+    sd.wait()
+
     
-    print(response.status_code)
+    print(response.status_code, flush = True)
     print(response.text)
     print(response.json()["isDrone"])
     sleep(5)

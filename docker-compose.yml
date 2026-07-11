@@ -5,16 +5,16 @@ services:
     ports:
       - "5001:5001"
 
-  frontend:
-    image: backend
-    build: ./client
-    ports:
-      - "3000:3000"
-
-  #listener:
-  #  image: listener
-  #  build: ./scripts
-  #  devices:
-  #    - "/dev/snd:/dev/snd"
+  #frontend:
+  #  image: backend
+  #  build: ./client
   #  ports:
-  #    - "8080:8080"
+  #    - "3000:3000"
+
+  listener:
+    image: listener
+    build: ./scripts
+    devices:
+      - "/dev/snd:/dev/snd"
+    ports:
+      - "8080:8080"
