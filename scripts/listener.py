@@ -31,6 +31,7 @@ def rec_audio(fs, seconds):
 def listen():
   fs = 44100  # Sample rate
   seconds = 2  # Duration of recording
+  fs, audio = read("danger.wav")
 
   while True:
     payload = rec_audio(fs, seconds)
@@ -42,7 +43,6 @@ def listen():
     if response.json()["isDrone"]:
       pass
 
-    fs, audio = read("danger.wav")
     sd.play(audio, fs)
     sd.wait()
 
