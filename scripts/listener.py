@@ -28,7 +28,7 @@ def rec_audio(fs, seconds):
 
 def listen():
   fs = 44100  # Sample rate
-  seconds = 2  # Duration of recording
+  seconds = 20  # Duration of recording
   fs, audio = read("danger.wav")
   backend_url = "http://backend:5001"
 
@@ -47,7 +47,7 @@ def listen():
     print(response.status_code, flush = True)
     print(response.text)
     print(response.json()["isDrone"])
-    sleep(5)
+    sleep(2)
 
 if __name__ == "__main__":
   listen()
