@@ -5,8 +5,6 @@ import base64
 import sounddevice as sd
 from scipy.io.wavfile import write, read
 
-backend_url = "http://backend:5001"
-
 def rec_audio(fs, seconds):
   myrec = sd.rec(int(seconds * fs), samplerate=fs, channels=1, dtype="int16")
   sd.wait()  # Wait until recording is finished
@@ -32,6 +30,7 @@ def listen():
   fs = 44100  # Sample rate
   seconds = 2  # Duration of recording
   fs, audio = read("danger.wav")
+  backend_url = "http://backend:5001"
 
   while True:
     payload = rec_audio(fs, seconds)
