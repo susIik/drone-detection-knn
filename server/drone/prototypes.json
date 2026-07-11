@@ -1,6 +1,6 @@
 [
   {
-    "id": "proto_dji_mavic_00238a86",
+    "id": "proto_dji_mavic_a1f7d4db",
     "label": "dji mavic",
     "category": "drone",
     "description": "dji mavic from soundzee-dji-mavic-3-pro-370955.wav",
@@ -28,7 +28,7 @@
     ]
   },
   {
-    "id": "proto_dji_mini_5983b814",
+    "id": "proto_dji_mini_ccdf7cd7",
     "label": "dji mini",
     "category": "drone",
     "description": "dji mini from soundzee-dji-mini-4-pro-370957.mp3",
@@ -53,6 +53,34 @@
       0.030869513903213585,
       1,
       0.14037100161980162
+    ]
+  },
+  {
+    "id": "proto_testtt_eede4c1b",
+    "label": "testtt",
+    "category": "drone",
+    "description": "testtt from idoberg-relaxing-guitar-loop-v5-245859.mp3",
+    "source": "..\\Drone-Training-Data\\testtt\\idoberg-relaxing-guitar-loop-v5-245859.mp3",
+    "features": [
+      0.2936522853802677,
+      0.02047505597051889,
+      0.10669150850690998,
+      0.1861225112036855,
+      0.15929031372070312,
+      0.20674040378121727,
+      0.014179229736328125,
+      1,
+      0.5407089223000003,
+      0.08623161957577201,
+      0.5942854607332181,
+      1,
+      0.8568645528738669,
+      0.9935438782762105,
+      0.51278263173373,
+      0.9970654088356666,
+      0.01854846578095485,
+      1,
+      0.1149501752556661
     ]
   }
 ]
