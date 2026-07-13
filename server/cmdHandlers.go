@@ -273,7 +273,7 @@ func newAudioClassificationHandler(classifier *drone.Classifier, templateMatcher
 
 		if usePANNS && audioSample.Persisted != "" {
 			// Use PANNS embedding service
-			embeddingServiceURL := utils.GetEnv("EMBEDDING_SERVICE_URL", "http://localhost:5002")
+			embeddingServiceURL := utils.GetEnv("EMBEDDING_SERVICE_URL", "http://panns:5002")
 			pannsClient := embedding.NewPANNSClient(embeddingServiceURL)
 
 			// Call PANNS service to get embedding
