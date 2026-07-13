@@ -11,6 +11,12 @@ services:
   #  ports:
   #    - "3000:3000"
 
+  panns:
+    image: panns
+    build: ./ml
+    ports:
+      - "5002:5002"
+
   listener:
     image: listener
     build: ./scripts
