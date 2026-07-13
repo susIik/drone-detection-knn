@@ -62,7 +62,7 @@ def process_directory(root_dir, category="drone"):
         
         # Find all audio files
         audio_files = []
-        for ext in ['*.wav', '*.WAV', '*.mp3', '*.MP3']:
+        for ext in ['*.wav', '*.mp3']: # add *.WAV *.MP3 if on linux
             audio_files.extend(glob.glob(os.path.join(subdir, ext)))
         
         if not audio_files:
