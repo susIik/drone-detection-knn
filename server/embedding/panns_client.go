@@ -27,7 +27,7 @@ type EmbeddingResponse struct {
 // NewPANNSClient creates a new PANNS embedding client
 func NewPANNSClient(serviceURL string) *PANNSClient {
 	if serviceURL == "" {
-		serviceURL = "http://localhost:5002"
+		serviceURL = "http://panns:5002"
 	}
 
 	return &PANNSClient{
