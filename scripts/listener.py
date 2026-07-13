@@ -44,10 +44,10 @@ def listen():
       sd.wait()
 
     
-    print(response.status_code, flush = True)
-    print(response.text)
+    print(response.status_code)
     print(response.json()["isDrone"])
-    sleep(2)
+    print(response.json()["predictions"], flush = True)
+    sleep(1)
 
 if __name__ == "__main__":
   listen()
