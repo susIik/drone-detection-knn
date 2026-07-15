@@ -50,4 +50,6 @@ def listen():
     sleep(1)
 
 if __name__ == "__main__":
+  sd.default.device = 1, 2 # HDMI -> 1, 2; No HDMI -> 0, 1
+  print(sd.query_devices(), flush= True)
   listen()
