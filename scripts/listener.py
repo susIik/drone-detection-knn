@@ -28,7 +28,7 @@ def rec_audio(fs, seconds):
 
 def listen():
   fs = 44100  # Sample rate
-  seconds = 20  # Duration of recording
+  seconds = 5  # Duration of recording
   fs, audio = read("danger.wav")
   backend_url = "http://backend:5001"
 
@@ -50,6 +50,13 @@ def listen():
     sleep(1)
 
 if __name__ == "__main__":
-  sd.default.device = 1, 2 # HDMI -> 1, 2; No HDMI -> 0, 1
+  out_name = "DigiAMP"
+  in_name = "Shure MVX2U"
+
+  for i, device in enumerate(sd.query_devices()):
+    print(i, device["name"], flush= True)
+
+  
+  #sd.default.device = 1, 2 # HDMI -> 1, 2; No HDMI -> 0, 1
   print(sd.query_devices(), flush= True)
   listen()
