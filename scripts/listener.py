@@ -5,6 +5,23 @@ import base64
 import sounddevice as sd
 from scipy.io.wavfile import write, read
 
+
+def set_audio_devices():
+  out_name = "DigiAMP"
+  in_name = "Shure MVX2U"
+  out_index = None
+  in_index = None
+
+  for i, device in enumerate(sd.query_devices()):
+    if in_name.lower() in device["name"].lower():
+      in_index = i
+    elif out_name.lower() in device["name"].lower():
+      out_index = i
+
+  sd.default.device = in_index, out_index # HDMI -> 1, 2; No HDMI -> 0, 1
+  print(sd.query_devices(), flush= True)
+
+
 def rec_audio(fs, seconds):
   myrec = sd.rec(int(seconds * fs), samplerate=fs, channels=1, dtype="int16")
   sd.wait()  # Wait until recording is finished
@@ -50,13 +67,5 @@ def listen():
     sleep(1)
 
 if __name__ == "__main__":
-  out_name = "DigiAMP"
-  in_name = "Shure MVX2U"
-
-  for i, device in enumerate(sd.query_devices()):
-    print(i, device["name"], flush= True)
-
-  
-  #sd.default.device = 1, 2 # HDMI -> 1, 2; No HDMI -> 0, 1
-  print(sd.query_devices(), flush= True)
+  set_audio_devices()
   listen()
