@@ -33,6 +33,9 @@ package-lock.json
 
 Drone-Training-Data 
 Test data
+train_data_noise
+noise_prototypes.json
+prototypes_merged.json
 
 frontendrecording
 

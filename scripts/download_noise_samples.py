@@ -220,7 +220,7 @@ def main():
     print()
     
     # Check for API key
-    api_key = os.environ.get("FREESOUND_API_KEY")
+    api_key = "FuHW17IkgC6at7a2H8PHUMSv1rxnwgt9iWnfXxf7" #os.environ.get("FREESOUND_API_KEY")
     if not api_key:
         print("❌ ERROR: FREESOUND_API_KEY environment variable not set")
         print()
